@@ -6,10 +6,11 @@ This bot I coded uses an api and takes seven of the busiest train stations in Ge
 
 Expected Output:
 
-Most delayed train: \n
-From: Frankfurt 
-Direction: München Hbf 
-Line: ICE 591 
-Delay: 61 minutes 
-'''---------------------------------------'''
-Percentage of Indexed Trains Experiencing Delays: ~40%
+Most delayed train:   
+From: Frankfurt  
+Direction: München Hbf    
+Line: ICE 591     
+Delay: 61 minutes      
+'''---------------------------------------'''     
+Percentage of Indexed Trains Experiencing Delays: ~40%      
+
