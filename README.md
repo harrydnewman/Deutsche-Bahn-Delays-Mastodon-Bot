@@ -11,6 +11,7 @@ From: Frankfurt
 Direction: München Hbf    
 Line: ICE 591     
 Delay: 61 minutes      
+
 ---------------------------------------      
 Percentage of Indexed Trains Experiencing Delays: ~40%      
 
