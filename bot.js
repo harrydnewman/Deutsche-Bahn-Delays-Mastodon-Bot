@@ -58,9 +58,9 @@ async function makeStatus(text) {
 
 setInterval(() => {
 
-    function fetchDepartures(x, y) {
+    function fetchDepartures(x, y, duration) {
         if (stationIds[x] !== stationIds[y]) {
-            let url = "https://v6.db.transport.rest/stops/" + stationIds[x] + "/departures?direction=" + stationIds[y] + "&duration=1800";
+            let url = "https://v6.db.transport.rest/stops/" + stationIds[x] + "/departures?direction=" + stationIds[y] + "&duration="+ duration;
 
             return fetch(url)
                 .then(response => response.json())
@@ -83,6 +83,7 @@ setInterval(() => {
                         });
                     } else {
                         console.log('No departures data found.');
+                        fetchDepartures(x, y, duration)
                     }
                 })
                 .catch(error => console.error(""));
@@ -90,11 +91,11 @@ setInterval(() => {
         }
     }
 
-
+    let duration = 120; //Number of minutes it is indexing for
     async function handleStationPairs() {
         for (let x = 0; x < stationIds.length; x++) {
             for (let y = 0; y < stationIds.length; y++) {
-                await fetchDepartures(x, y);
+                await fetchDepartures(x, y, duration);
             }
         }
     }
@@ -105,7 +106,7 @@ setInterval(() => {
             departureArray.sort((a, b) => b[6] - a[6]);
             let message = (
                 'Most delayed train:\n' +
-                'From: ' + departureArray[0][1] + '\n' +
+                'Station: ' + departureArray[0][1] + '\n' +
                 'Direction: ' + departureArray[0][2] + '\n' +
                 'Line: ' + departureArray[0][3] + '\n' +
                 'Delay: ' + departureArray[0][6] + ' minutes\n' +
