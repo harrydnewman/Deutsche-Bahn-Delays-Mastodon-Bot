@@ -105,7 +105,7 @@ setInterval(() => {
         if (departureArray.length > 0) {
             departureArray.sort((a, b) => b[6] - a[6]);
             let message = (
-                'Most delayed train:\n' +
+                'Most delayed Deutsche Bahn train:\n' +
                 'Station: ' + departureArray[0][1] + '\n' +
                 'Direction: ' + departureArray[0][2] + '\n' +
                 'Line: ' + departureArray[0][3] + '\n' +
