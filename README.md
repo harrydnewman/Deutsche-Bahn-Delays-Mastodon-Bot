@@ -13,3 +13,6 @@ Line: ICE 591
 Delay: 61 minutes      
 Percentage of Indexed Trains Experiencing Delays: ~40%      
 
+### Note
+
+This bot currently does not work as the API is broken. 
