@@ -1,18 +1,5 @@
-const { uptime } = require("process");
-
-require("dotenv").config();
-
 const m = require('masto');
-
-const stations = {
-    'Frankfurt': '8000105',
-    'Munich': '8000261',
-    'Cologne': '8000207',
-    'Hamburg': '8002549',
-    'Berlin': '8011113',
-    'Stuttgart': '8000096',
-    'Hanover': '8000152',
-};
+require("dotenv").config();
 
 const stationNames = [
     'Frankfurt',
@@ -125,7 +112,4 @@ setInterval(() => {
     }).catch(error => console.error('Error handling station pairs:', error));
 
 },1800000 )
-// }, 1000)
-
-// 1800000
 
