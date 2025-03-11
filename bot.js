@@ -46,12 +46,13 @@ const masto = m.createRestAPIClient({
 })
 
 async function makeStatus(text) {
-    const status = await masto.v1.statuses.create({
-        status: text,
-        visibility: "public" //if you wanted to make this private you could change this to private for testing
-    });
+    console.log(`Status text: ${text}`)
+    // const status = await masto.v1.statuses.create({
+    //     status: text,
+    //     visibility: "public" //if you wanted to make this private you could change this to private for testing
+    // });
 
-    console.log(status.url);
+    // console.log(status.url);
 }
 
 // makeStatus();
@@ -86,8 +87,7 @@ setInterval(() => {
                         fetchDepartures(x, y, duration)
                     }
                 })
-                .catch(error => console.error(""));
-            // .catch(error => console.error('Error fetching departures:', error));
+            .catch(error => console.error('Error fetching departures:', error));
         }
     }
 
@@ -115,16 +115,17 @@ setInterval(() => {
                 // 'Delay Count: ' + delayCount + '\n' +
                 'Percentage of Indexed Trains Experiencing Delays: ~' + Math.floor((delayCount / departureCount) * 100) + '%'
             );
-            console.log(message);
-            makeStatus(message);
+            console.log(`message: ${message}`);
+            // makeStatus(message);
 
 
         } else {
-            console.log('No delayed trains found.');
+            console.error('No delayed trains found.');
         }
-    }).catch(error => console.error('Error handling station pairs:', ""));
+    }).catch(error => console.error('Error handling station pairs:', error));
 
-},1800000 )
+// },1800000 )
+}, 1000)
 
 // 1800000
 
