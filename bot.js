@@ -59,11 +59,11 @@ async function makeStatus(text) {
 
 setInterval(() => {
 
-    function fetchDepartures(x, y, duration) {
+    async function fetchDepartures(x, y, duration) {
         if (stationIds[x] !== stationIds[y]) {
             let url = "https://v6.db.transport.rest/stops/" + stationIds[x] + "/departures?direction=" + stationIds[y] + "&duration="+ duration;
 
-            return fetch(url)
+           return await fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     if (data.departures && Array.isArray(data.departures)) {
@@ -71,7 +71,7 @@ setInterval(() => {
                         data.departures.forEach(departure => {
                             if (departure.delay > 300) {
                                 delayCount += 1;
-                                let departureInfo = [];
+                                 let departureInfo = [];
                                 departureInfo.push(stationNames[x]);
                                 departureInfo.push(stationNames[y]);
                                 departureInfo.push(departure.direction);
@@ -84,7 +84,7 @@ setInterval(() => {
                         });
                     } else {
                         console.log('No departures data found.');
-                        fetchDepartures(x, y, duration)
+                       
                     }
                 })
             .catch(error => console.error('Error fetching departures:', error));
@@ -116,7 +116,7 @@ setInterval(() => {
                 'Percentage of Indexed Trains Experiencing Delays: ~' + Math.floor((delayCount / departureCount) * 100) + '%'
             );
             console.log(`message: ${message}`);
-            // makeStatus(message);
+            makeStatus(message);
 
 
         } else {
@@ -124,8 +124,8 @@ setInterval(() => {
         }
     }).catch(error => console.error('Error handling station pairs:', error));
 
-// },1800000 )
-}, 1000)
+},1800000 )
+// }, 1000)
 
 // 1800000
 
